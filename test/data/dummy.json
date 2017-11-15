@@ -1,0 +1,42 @@
+{
+  "range": "Dummy!A1:Z100",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "id",
+      "name",
+      "type",
+      "order"
+    ],
+    [
+      "int",
+      "string",
+      "string",
+      "int"
+    ],
+    [
+      "1",
+      "dummy_1",
+      "dummy_type_1",
+      "1"
+    ],
+    [
+      "2",
+      "dummy_2",
+      "dummy_type_1",
+      "2"
+    ],
+    [
+      "3",
+      "dummy_3",
+      "dummy_type_1",
+      "3"
+    ],
+    [
+      "4",
+      "dummy_4",
+      "dummy_type_2",
+      "4"
+    ]
+  ]
+}
