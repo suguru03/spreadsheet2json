@@ -15,10 +15,10 @@ const tokenpath = '<token path>';
 
 // configuration
 const config = {
-  client_id: '<client id>',
-  client_secret: '<client secret>',
+  clientId: '<client id>',
+  clientSecret: '<client secret>',
   scope: ['https://spreadsheets.google.com/feeds'],
-  redirect_url: '<reidrect url>',
+  redirectUrl: '<reidrect url>',
   port: '<port>',
   token: fs.existsSync(tokenpath) && require(tokenpath),
 };
@@ -45,4 +45,34 @@ const sheet = await spreadsheet.getSheet('<sheet name>');
 const sheetMap = await spreadsheet.getSheetMap(['sheet1', 'sheet3']);
 ```
 
+## APIs
 
+### Spreadsheet.configure(config)
+
+### Spreadsheet.defineTitle([line=1], [vartical=false], [sort=false])
+
+The defined line will be used for object keys. (vartical is not supported yet.)
+If sort is true, the key will be sorted by JavaScript comparision.
+
+### Spreadsheet.defineValidation([line=2])
+
+The defined line will be used for validation. The validation types are as below. If it is not included, you can define own validations. See Speadsheet#getSheet
+
+|types|description|
+|---|---|
+|int/integer||
+|number/float/double||
+|string||
+|boolean||
+
+### Spreadsheet.defineFirstData([line=3])
+
+The defined line will be first data line.
+
+### Spreadsheet({ spreadsheetId })
+
+### async Spreadsheet#getSheet(sheetName, [validator], [formatter], [range], [object=true])
+
+### async Spreadsheet#getSheetMap([sheetNames], [validator or validators], [formatter or formatters], [ranges], [object=true])
+
+### async Spreadsheet#getInfo()
