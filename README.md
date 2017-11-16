@@ -45,16 +45,16 @@ const sheet = await spreadsheet.getSheet('<sheet name>');
 const sheetMap = await spreadsheet.getSheetMap(['sheet1', 'sheet3']);
 ```
 
-# APIs
+## APIs
 
-## Spreadsheet.configure(config)
+### Spreadsheet.configure(config)
 
-## Spreadsheet.defineTitle([line=1], [vartical=false], [sort=false])
+### Spreadsheet.defineTitle([line=1], [vartical=false], [sort=false])
 
 The defined line will be used for object keys. (vartical is not supported yet.)
 If sort is true, the key will be sorted by JavaScript comparision.
 
-## Spreadsheet.defineValidation([line=2])
+### Spreadsheet.defineValidation([line=2])
 
 The defined line will be used for validation. The validation types are as below. If it is not included, you can define own validations. See Speadsheet#getSheet
 
@@ -65,24 +65,24 @@ The defined line will be used for validation. The validation types are as below.
 |string||
 |boolean||
 
-## Spreadsheet.defineFirstData([line=3])
+### Spreadsheet.defineFirstData([line=3])
 
 The defined line will be first data line.
 
-## Spreadsheet({ spreadsheet_id })
+### Spreadsheet({ spreadsheet_id })
 
 Create a Spreadsheet instance with spreadsheet_id, you could speficy configulation as well.
 
-## async Spreadsheet#getSheet(sheetName, [validator], [formatter], [range], [object=true])
+### async Spreadsheet#getSheet(sheetName, [validator], [formatter], [range], [object=true])
 
 Get a sheet by specified name. The range will be resolved automatically, it doesn't need to be specified. \n
 If auto validation or default formatter is not enough, you can define them. \n
 If object is false, it will return a Sheet instance. You need to use 2D information, you need to call `Sheet#getMatrix`.
 
-## async Spreadsheet#getSheetMap([sheetNames], [validators], [formatters], [ranges], [object=true])
+### async Spreadsheet#getSheetMap([sheetNames], [validators], [formatters], [ranges], [object=true])
 
 Get sheets by specified names. If sheetNames is not defined, it will return all sheets.
 
-### async Spreadsheet#getInfo()
+#### async Spreadsheet#getInfo()
 
 Return spreadsheet information.
