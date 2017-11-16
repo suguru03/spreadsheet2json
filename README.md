@@ -15,10 +15,10 @@ const tokenpath = '<token path>';
 
 // configuration
 const config = {
-  clientId: '<client id>',
-  clientSecret: '<client secret>',
+  client_id: '<client id>',
+  client_secret: '<client secret>',
   scope: ['https://spreadsheets.google.com/feeds'],
-  redirectUrl: '<reidrect url>',
+  redirect_url: '<reidrect url>',
   port: '<port>',
   token: fs.existsSync(tokenpath) && require(tokenpath),
 };
@@ -47,7 +47,8 @@ const sheetMap = await spreadsheet.getSheetMap(['sheet1', 'sheet3']);
 
 ## APIs
 
-### Spreadsheet.configure(config)
+### Spreadsheet.configure({ client_id, client_secret, [scope], [redirect_url], [port], [token] })
+
 
 ### Spreadsheet.defineTitle([line=1], [vartical=false], [sort=false])
 
@@ -83,6 +84,6 @@ If object is false, it will return a Sheet instance. You need to use 2D informat
 
 Get sheets by specified names. If sheetNames is not defined, it will return all sheets.
 
-#### async Spreadsheet#getInfo()
+### async Spreadsheet#getInfo()
 
 Return spreadsheet information.
