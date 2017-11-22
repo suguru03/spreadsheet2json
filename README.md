@@ -1,12 +1,26 @@
 # spreadsheet2json
 
-Converts spreadsheet to JSON with validation, easy and fast.
+Converts spreadsheet to JSON with validation, it is easy and fast.
+You just need to specify `client_id`, `client_secret` and `spreadsheet_id`.
 
 ## Usage
 
 ```sh
 $ npm i spreadsheet2json
 ```
+
+First, you need to create a Spreadsheet on Google Drive.
+You can define several format, this is one of examples.
+
+|ID|Name|Type|Order|
+|---|---|---|---|
+|int|string|string|int|
+|1|test1|test_type_1|1|
+|2|test2|test_type_1|2|
+|3|test3|test_type_1|3|
+|4|test4|test_type_2|4|
+
+The code is as below.
 
 ```js
 const Spreadsheet = require('spreadsheet2json');
