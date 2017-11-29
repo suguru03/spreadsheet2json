@@ -20,6 +20,36 @@ You can define several format, this is one of examples.
 |3|test3|test_type_1|3|
 |4|test4|test_type_2|4|
 
+```json
+// generated json
+[
+  {
+    "ID": 1,
+    "Name": "test1",
+    "Type": "test_type_1",
+    "Order": 1
+  },
+  {
+    "ID": 2,
+    "Name": "test2",
+    "Type": "test_type_1",
+    "Order": 2
+  },
+  {
+    "ID": 3,
+    "Name": "test2",
+    "Type": "test_type_1",
+    "Order": 3
+  },
+  {
+    "ID": 4,
+    "Name": "test4",
+    "Type": "test_type_1",
+    "Order": 4
+  }
+]
+```
+
 The code is as below.
 
 ```js
