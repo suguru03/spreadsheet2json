@@ -9,8 +9,47 @@ You just need to specify `client_id`, `client_secret` and `spreadsheet_id`.
 $ npm i spreadsheet2json
 ```
 
+```js
+const Spreadsheet = require('spreadsheet2json');
+
+const tokenpath = '<token path>';
+
+// configuration
+const config = {
+  client_id: '<client id>',
+  client_secret: '<client secret>',
+  scope: ['https://spreadsheets.google.com/feeds'],
+  redirect_url: '<reidrect url>',
+  port: '<port>',
+  token: fs.existsSync(tokenpath) && require(tokenpath),
+};
+Spreadsheet.configure(config);
+
+// define title, validation and first line of data
+const spreadsheet = new Spreadsheet({ spreadsheet_id: '<spreadsheet id>' })
+  .defineTitle(1)
+  .defineValidation(2)
+  .defineFirstData(3);
+
+if (!config.token) {
+  const token = await spreadsheet.authorize();
+  fs.writeFileSync(tokenpath, JSON.stringify(token));
+}
+
+// get all sheets
+const sheetMap = await spreadsheet.getSheetMap();
+
+// get a sheet
+const sheet = await spreadsheet.getSheet('<sheet name>');
+
+// get speficied sheets
+const sheetMap = await spreadsheet.getSheetMap(['sheet1', 'sheet3']);
+```
+
+## Example
+
 First, you need to create a Spreadsheet on Google Drive.
-You can define several format, this is one of examples.
+If You define like this table, it will convert to JSON as below.
 
 |ID|Name|Type|Order|
 |---|---|---|---|
@@ -39,8 +78,7 @@ You can define several format, this is one of examples.
     "ID": 3,
     "Name": "test2",
     "Type": "test_type_1",
-    "Order": 3
-  },
+    "Order": 3 },
   {
     "ID": 4,
     "Name": "test4",
@@ -48,45 +86,6 @@ You can define several format, this is one of examples.
     "Order": 4
   }
 ]
-```
-
-The code is as below.
-
-```js
-const Spreadsheet = require('spreadsheet2json');
-
-const tokenpath = '<token path>';
-
-// configuration
-const config = {
-  client_id: '<client id>',
-  client_secret: '<client secret>',
-  scope: ['https://spreadsheets.google.com/feeds'],
-  redirect_url: '<reidrect url>',
-  port: '<port>',
-  token: fs.existsSync(tokenpath) && require(tokenpath),
-};
-Spreadsheet.configure(config);
-
-// define title, validation and first line of data
-const spreadsheet = new Spreadsheet({ spreadsheet_id: '<spreadsheet id>' });
-  .defineTitle(1)
-  .defineValidation(2);
-  .defineFirstData(3);
-
-if (!config.token) {
-  const token = await spreadsheet.authorize();
-  fs.writeFileSync(tokenpath, JSON.stringify(token));
-}
-
-// get all sheets
-const sheetMap = await spreadsheet.getSheetMap();
-
-// get a sheet
-const sheet = await spreadsheet.getSheet('<sheet name>');
-
-// get speficied sheets
-const sheetMap = await spreadsheet.getSheetMap(['sheet1', 'sheet3']);
 ```
 
 ## APIs
