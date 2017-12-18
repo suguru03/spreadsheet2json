@@ -5,7 +5,7 @@ const assert = require('assert');
 const _ = require('lodash');
 
 const dummy = require('../data/dummy');
-const Sheet = require('../../lib/sheet');
+const Sheet = require('../../lib/sheet')();
 
 describe('Sheet', () => {
 
