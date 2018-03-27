@@ -8,16 +8,13 @@ const dummy = require('../data/dummy');
 const Sheet = require('../../lib/sheet')();
 
 describe('Sheet', () => {
-
   beforeEach(() => {
-    Sheet
-      .defineTitle(1)
+    Sheet.defineTitle(1)
       .defineValidation(2)
       .defineFirstData(3);
   });
 
   describe('toObject', () => {
-
     it('should create an array of objects', () => {
       const sheet = new Sheet('dummy', dummy);
       assert.deepStrictEqual(sheet.toObject(), [
@@ -55,5 +52,4 @@ describe('Sheet', () => {
       assert.deepStrictEqual(_.keys(item), ['id', 'name', 'order', 'type']);
     });
   });
-
 });

@@ -4,7 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test --recursive"
+    "test": "mocha test --recursive",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "repository": {
     "type": "git",
@@ -24,6 +31,9 @@
   },
   "devDependencies": {
     "eslint": "^4.9.0",
-    "mocha": "^4.0.1"
+    "husky": "^0.14.3",
+    "lint-staged": "^7.0.0",
+    "mocha": "^4.0.1",
+    "prettier": "^1.11.1"
   }
 }
