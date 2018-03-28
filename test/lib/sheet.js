@@ -5,14 +5,9 @@ const assert = require('assert');
 const _ = require('lodash');
 
 const dummy = require('../data/dummy');
-const Sheet = require('../../lib/sheet')();
+const Sheet = require('../../lib/sheet');
 
 describe('Sheet', () => {
-  beforeEach(() => {
-    Sheet.defineTitle(1)
-      .defineValidation(2)
-      .defineFirstData(3);
-  });
 
   describe('toObject', () => {
     it('should create an array of objects', () => {
@@ -46,8 +41,8 @@ describe('Sheet', () => {
     });
 
     it('should sort title', () => {
-      Sheet.defineTitle(1, false, true);
-      const sheet = new Sheet('dummy', dummy);
+      const sheet = new Sheet('dummy', dummy)
+        .defineTitleLine(1, { sort: true });
       const item = _.first(sheet.toObject());
       assert.deepStrictEqual(_.keys(item), ['id', 'name', 'order', 'type']);
     });
